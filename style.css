@@ -1,43 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap');
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Fredoka', sans-serif;
   margin: 0;
   padding: 0;
+  background: #fff9f0;
+  color: #333;
 }
 
 header {
-  background-color: #333;
+  background: linear-gradient(to right, #ff6ec4, #7873f5);
   color: white;
-  padding: 1rem;
+  padding: 2rem;
   text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
 }
 
 nav {
-  background-color: #444;
   display: flex;
   justify-content: center;
-  padding: 0.5rem;
+  background-color: #ffb6b9;
+  padding: 0.8rem;
+  gap: 1.5rem;
 }
 
 nav a {
-  color: white;
-  padding: 0.5rem 1rem;
   text-decoration: none;
+  color: white;
+  background: #ff6f91;
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
 nav a:hover {
-  background-color: #555;
+  transform: scale(1.1);
+  background: #ff4e73;
 }
 
 main {
   padding: 2rem;
+  display: grid;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+main h2, main h3 {
+  color: #ff6f91;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  background: #fff;
+  border-left: 5px solid #ffb6b9;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+iframe {
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
 }
 
 footer {
-  background-color: #333;
-  color: white;
   text-align: center;
+  background: #7873f5;
+  color: white;
   padding: 1rem;
-  position: relative;
-  bottom: 0;
-  width: 100%;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
 }
