@@ -2,24 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>About - My Website</title>
+  <title>🎵 My Favorite Albums</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body data-default-album="Album1">
   <header>
-    <h1>About Us</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <h1>🎶 My Favorite Albums</h1>
   </header>
-  <main>
-    <h2>About</h2>
-    <p>This page tells you a bit more about our site and team.</p>
+
+  <main class="main-layout">
+    <aside class="season-buttons">
+      <button onclick="loadAlbum('Album1')">Album 1</button>
+      <button onclick="loadAlbum('Album2')">Album 2</button>
+    </aside>
+
+    <section class="video-panel">
+      <audio id="audioPlayer" controls>
+        <source src="" type="audio/mpeg" />
+        Your browser does not support the audio tag.
+      </audio>
+
+      <ul id="partList"></ul>
+
+      <div id="audioData" style="display: none;">
+        <div class="album" data-album="Album1">
+          <div class="track" data-src="audio/Album1/Track1.mp3" data-img="covers/Album1-Track1.jpg" data-title="Track 1"></div>
+          <div class="track" data-src="audio/Album1/Track2.mp3" data-img="covers/Album1-Track2.jpg" data-title="Track 2"></div>
+        </div>
+        <div class="album" data-album="Album2">
+          <div class="track" data-src="audio/Album2/Track1.mp3" data-img="covers/Album2-Track1.jpg" data-title="Track 1"></div>
+          <div class="track" data-src="audio/Album2/Track2.mp3" data-img="covers/Album2-Track2.jpg" data-title="Track 2"></div>
+        </div>
+      </div>
+    </section>
   </main>
+
   <footer>
-    <p>&copy; 2025 My Website</p>
+    <p>&copy; 2025 My Audio Playlist</p>
   </footer>
+
+  <script src="scripts.js"></script>
 </body>
 </html>
