@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Video Playlist</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🎬 My Favorite Clips</h1>
+  </header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="artists.html">Artists</a>
+    <a href="shows.html">Shows</a>
+    <a href="movies.html">Movies</a>
+    <a href="videos.html">Videos</a>
+  </nav>
+  <main>
+    <div class="video-container">
+      <video id="videoPlayer" width="100%" height="auto" controls>
+        <source src="videos/video1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <ul id="videoPlaylist">
+        <li data-src="videos/video1.mp4">🎥 Scene 1</li>
+        <li data-src="videos/video2.mp4">🎥 Scene 2</li>
+        <li data-src="videos/video3.mp4">🎥 Scene 3</li>
+      </ul>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2025 My Favorites</p>
+  </footer>
+  <script src="scripts.js"></script>
+</body>
+</html>
