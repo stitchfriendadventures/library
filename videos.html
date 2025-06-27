@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Phineas and Ferb</title>
+  <title>My Favorite Shows</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body data-default-season="Season1">
-  <header><h1>🎞️ Phineas and Ferb</h1></header>
+  <header>
+    <h1>🎬 Phineas and Ferb</h1>
+  </header>
 
   <main class="main-layout">
     <!-- Sidebar: Season Buttons -->
@@ -15,14 +17,14 @@
       <button onclick="loadSeason('Season2')">Season 2</button>
     </aside>
 
-    <!-- Video Panel -->
+    <!-- Main Panel -->
     <section class="video-panel">
       <video id="videoPlayer" width="400" controls>
         <source src="" type="video/mp4">
         Your browser does not support the video tag.
       </video>
 
-      <!-- Episode Dropdown -->
+      <!-- Episode Selection -->
       <div class="controls">
         <label for="episodeSelect">Choose Episode:</label>
         <select id="episodeSelect" onchange="loadEpisodeParts()">
@@ -30,31 +32,34 @@
         </select>
       </div>
 
-      <!-- Part List -->
+      <!-- Part Thumbnails -->
       <ul id="partList"></ul>
 
-      <!-- 🎯 Hidden Video Data -->
+      <!-- Hidden Video Data -->
       <div id="videoData" style="display: none;">
         <div class="season" data-season="Season1">
           <div class="episode" data-episode="Episode 1">
-            <div class="part" data-src="videos/Season1/Ep1-Part1.mp4"></div>
-            <div class="part" data-src="videos/Season1/Ep1-Part2.mp4"></div>
+            <div class="part" data-src="videos/Season1/Ep1-Part1.mp4" data-img="thumbs/Season1/Ep1-Part1.jpg"></div>
+            <div class="part" data-src="videos/Season1/Ep1-Part2.mp4" data-img="thumbs/Season1/Ep1-Part2.jpg"></div>
           </div>
           <div class="episode" data-episode="Episode 2">
-            <div class="part" data-src="videos/Season1/Ep2-Part1.mp4"></div>
+            <div class="part" data-src="videos/Season1/Ep2-Part1.mp4" data-img="thumbs/Season1/Ep2-Part1.jpg"></div>
           </div>
         </div>
         <div class="season" data-season="Season2">
           <div class="episode" data-episode="Episode 55">
-            <div class="part" data-src="pf.02.55_001.mp4"></div>
-            <div class="part" data-src="pf.02.55_002.mp4"></div>
+            <div class="part" data-src="pf.02.55_001.mp4" data-img="pf.02.55_001.jpg"></div>
+            <div class="part" data-src="pf.02.55_002.mp4" data-img="pf.02.55_002.jpg"></div>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer><p>&copy; 2025 My Video Playlist</p></footer>
+  <footer>
+    <p>&copy; 2025 My Playlist</p>
+  </footer>
+
   <script src="scripts.js"></script>
 </body>
 </html>
