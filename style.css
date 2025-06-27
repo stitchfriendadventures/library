@@ -85,7 +85,12 @@ footer {
 }
 
 .part-thumbnail:hover {
-  border: 2px solid #ff6699;
+  border-color: #ff6699;
+}
+
+.part-thumbnail.active {
+  border-color: #3399ff;
+  box-shadow: 0 0 5px #3399ff;
 }
 
 .part-thumbnail img.thumb {
