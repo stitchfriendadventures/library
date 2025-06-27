@@ -39,9 +39,24 @@ function loadEpisodeParts() {
   currentIndex = 0;
 
   partList.innerHTML = '';
-  currentParts.forEach((src, index) => {
+
+  parts.forEach((part, index) => {
+    const src = part.getAttribute('data-src');
+    const img = part.getAttribute('data-img') || 'thumbs/default.jpg';
+
     const li = document.createElement('li');
-    li.textContent = `Part ${index + 1}`;
+    li.className = 'part-thumbnail';
+
+    const image = document.createElement('img');
+    image.src = img;
+    image.alt = `Part ${index + 1}`;
+    image.className = 'thumb';
+
+    const label = document.createElement('span');
+    label.textContent = `Part ${index + 1}`;
+
+    li.appendChild(image);
+    li.appendChild(label);
     li.dataset.index = index;
     li.addEventListener('click', () => playPart(index));
     partList.appendChild(li);
