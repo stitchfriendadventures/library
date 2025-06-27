@@ -2,28 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Video Playlist by Season & Episode</title>
+  <title>Phineas and Ferb</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <header>
-    <h1>🎥 My Series Viewer</h1>
-  </header>
+<body data-default-season="Season1">
+  <header><h1>🎞️ Phineas and Ferb</h1></header>
 
   <main class="main-layout">
-    <!-- Side Season Buttons -->
+    <!-- Sidebar: Season Buttons -->
     <aside class="season-buttons">
       <button onclick="loadSeason('Season1')">Season 1</button>
       <button onclick="loadSeason('Season2')">Season 2</button>
     </aside>
 
-    <!-- Video Player & Controls -->
+    <!-- Video Panel -->
     <section class="video-panel">
-      <video id="videoPlayer" width="100%" controls>
+      <video id="videoPlayer" width="400" controls>
         <source src="" type="video/mp4">
         Your browser does not support the video tag.
       </video>
 
+      <!-- Episode Dropdown -->
       <div class="controls">
         <label for="episodeSelect">Choose Episode:</label>
         <select id="episodeSelect" onchange="loadEpisodeParts()">
@@ -31,14 +30,31 @@
         </select>
       </div>
 
+      <!-- Part List -->
       <ul id="partList"></ul>
+
+      <!-- 🎯 Hidden Video Data -->
+      <div id="videoData" style="display: none;">
+        <div class="season" data-season="Season1">
+          <div class="episode" data-episode="Episode 1">
+            <div class="part" data-src="videos/Season1/Ep1-Part1.mp4"></div>
+            <div class="part" data-src="videos/Season1/Ep1-Part2.mp4"></div>
+          </div>
+          <div class="episode" data-episode="Episode 2">
+            <div class="part" data-src="videos/Season1/Ep2-Part1.mp4"></div>
+          </div>
+        </div>
+        <div class="season" data-season="Season2">
+          <div class="episode" data-episode="Episode 55">
+            <div class="part" data-src="Season2/pf.02.55_001.mp4"></div>
+            <div class="part" data-src="Season2/pf.02.55_002.mp4"></div>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2025 My Video Playlist</p>
-  </footer>
-
+  <footer><p>&copy; 2025 My Video Playlist</p></footer>
   <script src="scripts.js"></script>
 </body>
 </html>
