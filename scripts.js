@@ -28,7 +28,6 @@ function loadSeason(seasonName) {
 function loadEpisodeParts() {
   const seasonName = episodeSelect.getAttribute('data-season');
   const epName = episodeSelect.value;
-
   if (!seasonName || !epName) return;
 
   const episode = dataContainer.querySelector(`.season[data-season="${seasonName}"] .episode[data-episode="${epName}"]`);
@@ -46,6 +45,7 @@ function loadEpisodeParts() {
 
     const li = document.createElement('li');
     li.className = 'part-thumbnail';
+    li.setAttribute('data-index', index);
 
     const image = document.createElement('img');
     image.src = img;
@@ -57,7 +57,6 @@ function loadEpisodeParts() {
 
     li.appendChild(image);
     li.appendChild(label);
-    li.dataset.index = index;
     li.addEventListener('click', () => playPart(index));
     partList.appendChild(li);
   });
@@ -70,6 +69,11 @@ function playPart(index) {
     video.src = currentParts[index];
     video.play();
     currentIndex = index;
+
+    // Highlight selected
+    document.querySelectorAll('#partList li').forEach(li => li.classList.remove('active'));
+    const selected = document.querySelector(`#partList li[data-index="${index}"]`);
+    if (selected) selected.classList.add('active');
   }
 }
 
