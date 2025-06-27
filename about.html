@@ -3,23 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <title>🎵 My Favorite Albums</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="audiostyle.css" />
 </head>
 <body data-default-album="Album1">
   <header>
     <h1>🎶 My Favorite Albums</h1>
-        <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="phineasandferb.html">Phineas and Ferb</a>
-    </nav>
-
   </header>
 
   <main class="main-layout">
     <aside class="season-buttons">
       <button onclick="loadAlbum('Album1')">Album 1</button>
-      <button onclick="loadAlbum('Album2')">Album 2</button>
     </aside>
 
     <section class="video-panel">
@@ -29,15 +22,29 @@
       </audio>
 
       <ul id="partList"></ul>
+      <div id="lyricsDisplay" class="lyrics-box"></div>
 
+      <!-- Data for tracks -->
       <div id="audioData" style="display: none;">
         <div class="album" data-album="Album1">
-          <div class="track" data-src="audio/Album1/Track1.mp3" data-img="covers/Album1-Track1.jpg" data-title="Track 1"></div>
-          <div class="track" data-src="audio/Album1/Track2.mp3" data-img="covers/Album1-Track2.jpg" data-title="Track 2"></div>
+          <div class="track" data-src="audio/Album1/Track1.mp3" data-img="covers/Album1-Track1.jpg" data-title="Track1"></div>
+          <div class="track" data-src="audio/Album1/Track2.mp3" data-img="covers/Album1-Track2.jpg" data-title="Track2"></div>
         </div>
-        <div class="album" data-album="Album2">
-          <div class="track" data-src="audio/Album2/Track1.mp3" data-img="covers/Album2-Track1.jpg" data-title="Track 1"></div>
-          <div class="track" data-src="audio/Album2/Track2.mp3" data-img="covers/Album2-Track2.jpg" data-title="Track 2"></div>
+      </div>
+
+      <!-- Lyrics data -->
+      <div id="lyricsData" style="display: none;">
+        <div class="lyrics" data-track="Album1-Track1">
+          <p data-time="0">[Intro]</p>
+          <p data-time="3">This is the first line of the song</p>
+          <p data-time="7">And here comes the next lyric line</p>
+          <p data-time="12">And now a powerful chorus arrives</p>
+        </div>
+
+        <div class="lyrics" data-track="Album1-Track2">
+          <p data-time="0">Track 2 starts here</p>
+          <p data-time="5">We're singing in sync</p>
+          <p data-time="10">The verse continues onward</p>
         </div>
       </div>
     </section>
