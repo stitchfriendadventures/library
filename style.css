@@ -1,115 +1,82 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap');
-
 body {
-  font-family: 'Fredoka', sans-serif;
+  font-family: sans-serif;
   margin: 0;
-  padding: 0;
-  background: #fff9f0;
+  background: #fff0f5;
   color: #333;
 }
 
 header {
-  background: linear-gradient(to right, #ff6ec4, #7873f5);
+  background: linear-gradient(to right, #f77062, #fe5196);
   color: white;
-  padding: 2rem;
+  padding: 1.5rem;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-header h1 {
-  margin: 0;
-  font-size: 2.5rem;
-}
-
-nav {
+.main-layout {
   display: flex;
-  justify-content: center;
-  background-color: #ffb6b9;
-  padding: 0.8rem;
-  gap: 1.5rem;
 }
 
-nav a {
-  text-decoration: none;
-  color: white;
+.season-buttons {
+  width: 150px;
+  background: #ffe6eb;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.season-buttons button {
+  padding: 0.7rem;
+  border: none;
   background: #ff6f91;
-  padding: 0.5rem 1.2rem;
-  border-radius: 20px;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
   font-weight: bold;
-  transition: transform 0.3s ease, background 0.3s ease;
 }
 
-nav a:hover {
-  transform: scale(1.1);
+.season-buttons button:hover {
   background: #ff4e73;
 }
 
-main {
+.video-panel {
+  flex: 1;
   padding: 2rem;
-  display: grid;
-  gap: 1.5rem;
-  max-width: 900px;
-  margin: auto;
 }
 
-main h2, main h3 {
-  color: #ff6f91;
+.controls {
+  margin: 1rem 0;
 }
 
-ul {
+select {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+#partList {
   list-style: none;
   padding: 0;
 }
 
-ul li {
-  background: #fff;
+#partList li {
+  background: white;
+  padding: 0.6rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
   border-left: 5px solid #ffb6b9;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  border-radius: 6px;
+  transition: background 0.3s;
 }
 
-iframe {
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+#partList li:hover {
+  background: #ffeef2;
 }
 
 footer {
   text-align: center;
-  background: #7873f5;
-  color: white;
   padding: 1rem;
-  margin-top: 2rem;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
-}
-
-.video-container {
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  flex-wrap: wrap;
-  align-items: flex-start;
-}
-
-#videoPlaylist {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 200px;
-}
-
-#videoPlaylist li {
-  background: #fff;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-#videoPlaylist li:hover {
-  background: #ffd6e0;
+  background: #f77062;
+  color: white;
 }
