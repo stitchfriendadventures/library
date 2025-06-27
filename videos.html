@@ -1,37 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Video Playlist</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Video Playlist by Season & Episode</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>🎬 My Favorite Clips</h1>
+    <h1>🎥 My Series Viewer</h1>
   </header>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="artists.html">Artists</a>
-    <a href="shows.html">Shows</a>
-    <a href="movies.html">Movies</a>
-    <a href="videos.html">Videos</a>
-  </nav>
-  <main>
-    <div class="video-container">
-      <video id="videoPlayer" width="400" height="auto" controls>
-        <source src="pf.02.55_001.mp4" type="video/mp4">
+
+  <main class="main-layout">
+    <!-- Side Season Buttons -->
+    <aside class="season-buttons">
+      <button onclick="loadSeason('Season1')">Season 1</button>
+      <button onclick="loadSeason('Season2')">Season 2</button>
+    </aside>
+
+    <!-- Video Player & Controls -->
+    <section class="video-panel">
+      <video id="videoPlayer" width="100%" controls>
+        <source src="" type="video/mp4">
         Your browser does not support the video tag.
       </video>
-      <ul id="videoPlaylist">
-        <li data-src="pf.02.55_001.mp4">🎥 Scene 1</li>
-        <li data-src="pf.02.55_002.mp4">🎥 Scene 2</li>
-        <li data-src="videos/video3.mp4">🎥 Scene 3</li>
-      </ul>
-    </div>
+
+      <div class="controls">
+        <label for="episodeSelect">Choose Episode:</label>
+        <select id="episodeSelect" onchange="loadEpisodeParts()">
+          <option value="">-- Select Episode --</option>
+        </select>
+      </div>
+
+      <ul id="partList"></ul>
+    </section>
   </main>
+
   <footer>
-    <p>&copy; 2025 My Favorites</p>
+    <p>&copy; 2025 My Video Playlist</p>
   </footer>
+
   <script src="scripts.js"></script>
 </body>
 </html>
