@@ -1,0 +1,90 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9ff;
+}
+
+header, footer {
+  background-color: #663399;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.main-layout {
+  display: flex;
+  flex-direction: row;
+}
+
+.season-buttons {
+  width: 150px;
+  padding: 1rem;
+  background-color: #eee;
+}
+
+.season-buttons button {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.video-panel {
+  flex: 1;
+  padding: 1rem;
+}
+
+#partList {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+  list-style: none;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.part-thumbnail {
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.3s;
+}
+
+.part-thumbnail.active {
+  border-color: #663399;
+}
+
+.part-thumbnail img.thumb {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+}
+
+.lyrics-box {
+  margin-top: 20px;
+  padding: 1rem;
+  background: #fff4f9;
+  border: 1px solid #ffccdd;
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  font-family: 'Courier New', monospace;
+}
+
+.lyrics-box p {
+  margin: 5px 0;
+  padding: 2px 6px;
+  transition: background 0.3s;
+}
+
+.lyrics-box p.active {
+  background: #ffe6ef;
+  color: #d9006c;
+  font-weight: bold;
+}
