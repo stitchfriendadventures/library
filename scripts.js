@@ -1,46 +1,45 @@
 const video = document.getElementById('videoPlayer');
 const episodeSelect = document.getElementById('episodeSelect');
 const partList = document.getElementById('partList');
-
-const videoData = {
-  "Season1": {
-    "Episode 1": ["videos/Season1/Ep1-Part1.mp4", "videos/Season1/Ep1-Part2.mp4"],
-    "Episode 2": ["videos/Season1/Ep2-Part1.mp4"]
-  },
-  "Season2": {
-    "Episode 1": ["videos/Season2/Ep1-Part1.mp4", "videos/Season2/Ep1-Part2.mp4"]
-  }
-};
+const dataContainer = document.getElementById('videoData');
 
 let currentParts = [];
 let currentIndex = 0;
 
-function loadSeason(season) {
+function loadSeason(seasonName) {
   episodeSelect.innerHTML = '<option value="">-- Select Episode --</option>';
-  const episodes = Object.keys(videoData[season]);
+  const season = dataContainer.querySelector(`.season[data-season="${seasonName}"]`);
+  if (!season) return;
+
+  const episodes = season.querySelectorAll('.episode');
   episodes.forEach(ep => {
+    const epName = ep.getAttribute('data-episode');
     const option = document.createElement('option');
-    option.value = ep;
-    option.textContent = ep;
+    option.value = epName;
+    option.textContent = epName;
     episodeSelect.appendChild(option);
   });
 
-  episodeSelect.setAttribute('data-season', season);
+  episodeSelect.setAttribute('data-season', seasonName);
   partList.innerHTML = '';
   video.src = '';
 }
 
 function loadEpisodeParts() {
-  const season = episodeSelect.getAttribute('data-season');
-  const episode = episodeSelect.value;
+  const seasonName = episodeSelect.getAttribute('data-season');
+  const epName = episodeSelect.value;
 
-  if (!season || !episode) return;
+  if (!seasonName || !epName) return;
 
-  currentParts = videoData[season][episode];
+  const episode = dataContainer.querySelector(`.season[data-season="${seasonName}"] .episode[data-episode="${epName}"]`);
+  if (!episode) return;
+
+  const parts = episode.querySelectorAll('.part');
+  currentParts = Array.from(parts).map(part => part.getAttribute('data-src'));
   currentIndex = 0;
 
   partList.innerHTML = '';
-  currentParts.forEach((part, index) => {
+  currentParts.forEach((src, index) => {
     const li = document.createElement('li');
     li.textContent = `Part ${index + 1}`;
     li.dataset.index = index;
@@ -59,8 +58,17 @@ function playPart(index) {
   }
 }
 
-video.addEventListener('ended', () => {
-  if (currentIndex + 1 < currentParts.length) {
-    playPart(currentIndex + 1);
+if (video) {
+  video.addEventListener('ended', () => {
+    if (currentIndex + 1 < currentParts.length) {
+      playPart(currentIndex + 1);
+    }
+  });
+}
+
+window.onload = function () {
+  const defaultSeason = document.body.getAttribute('data-default-season');
+  if (defaultSeason) {
+    loadSeason(defaultSeason);
   }
-});
+};
