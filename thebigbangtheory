@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Big Bang Theory</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-default-season="Season1">
+  <header>
+    <h1>The Big Bang Theory</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main class="main-layout">
+    <aside class="season-buttons">
+      <button onclick="loadSeason('Season1')">Season 1</button>
+      <button onclick="loadSeason('Season2')">Season 2</button>
+     ...
+      <button onclick="loadSeason('Season5')">Season 5</button>
+
+    </aside>
+
+    <section class="video-panel">
+      <video id="videoPlayer" width="600" controls>
+        <source src="" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <div class="controls">
+        <label for="episodeSelect">Choose Episode:</label>
+        <select id="episodeSelect" onchange="loadEpisodeParts()">
+          <option value="">-- Select Episode --</option>
+        </select>
+      </div>
+
+      <ul id="partList"></ul>
+
+      <div id="videoData" style="display: none;">
+        <div class="season" data-season="Season1">
+          <div class="episode" data-episode="Episode 5: The Hamburger Postulate">
+            <div class="part" data-src="tbbt.01.05/tbbt.01.05.mp4" data-img="tbbt.01.05/tbbt.01.05.jpg"></div>
+          </div>
+
+        </div>
+        <div class="season" data-season="Season2">
+          <div class="episode" data-episode="Episode 1: ">
+            <div class="part" data-src="tbbt.02.01/tbbt.02.01.mp4" data-img="tbbt.02.01/tbbt.02.01.jpg"></div>
+
+          </div>
+        </div>
+        <div class="season" data-season="Season5">
+          <div class="episode" data-episode="Episode 1">
+            <div class="part" data-src="tbbt.05.01/tbbt.05.01.mp4" data-img="tbbt.05.01/tbbt.05.01.jpg"></div>
+          </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
