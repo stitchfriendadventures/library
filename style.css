@@ -36,7 +36,7 @@ footer {
 .season-buttons button {
   padding: 0.5rem;
   border: none;
-  background: #ff99bb;
+  background: #380e7c;
   color: white;
   font-weight: bold;
   cursor: pointer;
@@ -45,7 +45,7 @@ footer {
 }
 
 .season-buttons button:hover {
-  background: #ff4f94;
+  background: #b09ad3;
 }
 
 .video-panel {
