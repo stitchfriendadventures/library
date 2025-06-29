@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jang Na Ra</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-default-season="Season1">
+  <header>
+    <h1>Maruko</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main class="main-layout">
+    <aside class="season-buttons">
+      <button onclick="loadSeason('Season1')">Maruko - Movie</button>
+      <button onclick="loadSeason('Season2')">Maruko - TV</button>
+
+
+    </aside>
+
+    <section class="video-panel">
+      <video id="videoPlayer" width="600" controls>
+        <source src="" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <div class="controls">
+        <label for="episodeSelect">Choose Episode:</label>
+        <select id="episodeSelect" onchange="loadEpisodeParts()">
+          <option value="">-- Select Episode --</option>
+        </select>
+      </div>
+
+      <ul id="partList"></ul>
+
+      <div id="videoData" style="display: none;">
+        <div class="season" data-season="Season1">
+          <div class="episode" data-episode="Maruko - Movie">
+            <div class="part" data-src="maruko/maruko_001.mp4" data-img="maruko/maruko_001.jpg"></div>
+            <div class="part" data-src="maruko/maruko_002.mp4" data-img="maruko/maruko_002.jpg"></div>
+            <div class="part" data-src="maruko/maruko_003.mp4" data-img="maruko/maruko_003.jpg"></div>
+            <div class="part" data-src="maruko/maruko_004.mp4" data-img="maruko/maruko_004.jpg"></div>
+            <div class="part" data-src="maruko/maruko_005.mp4" data-img="maruko/maruko_005.jpg"></div>
+            <div class="part" data-src="maruko/maruko_006.mp4" data-img="maruko/maruko_006.jpg"></div>
+            <div class="part" data-src="maruko/maruko_007.mp4" data-img="maruko/maruko_007.jpg"></div>
+            <div class="part" data-src="maruko/maruko_008.mp4" data-img="maruko/maruko_008.jpg"></div>
+            <div class="part" data-src="maruko/maruko_009.mp4" data-img="maruko/maruko_009.jpg"></div>
+            <div class="part" data-src="maruko/maruko_010.mp4" data-img="maruko/maruko_010.jpg"></div>
+
+          </div>
+
+        </div>
+        <div class="season" data-season="Season2">
+          <div class="episode" data-episode="Episode 1: ">
+            <div class="part" data-src="tbbt.02.01/tbbt.02.01.mp4" data-img="tbbt.02.01/tbbt.02.01.jpg"></div>
+
+          </div>
+        </div>
+
+    </section>
+  </main>
+
+  <footer>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
