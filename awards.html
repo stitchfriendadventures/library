@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jang Na Ra</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-default-season="Season1">
+  <header>
+    <h1>Awards</h1>
+    <nav>
+      <a href="index.html">Home</a>
+    </nav>
+  </header>
+
+  <main class="main-layout">
+    <aside class="season-buttons">
+      <button onclick="loadSeason('Season1')">2024 Awards</button>
+
+
+    </aside>
+
+    <section class="video-panel">
+      <video id="videoPlayer" width="600" controls>
+        <source src="" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <div class="controls">
+        <label for="episodeSelect">Choose Episode:</label>
+        <select id="episodeSelect" onchange="loadEpisodeParts()">
+          <option value="">-- Select Episode --</option>
+        </select>
+      </div>
+
+      <ul id="partList"></ul>
+
+      <div id="videoData" style="display: none;">
+        <div class="season" data-season="Season1">
+         <div class="episode" data-episode="SBS 2024">
+            <div class="part" data-src="sbs2024/sbs2024dramaawards_bestcouplenominee.mp4" data-img="sbs2024/sbs2024dramaawards_bestcouplenominee.jpg"></div>
+            <div class="part" data-src="sbs2024/sbs2024dramaawards_maleexcellenceawards.mp4" data-img="sbs2024/sbs2024dramaawards_maleexcellenceawards.jpg"></div>
+            <div class="part" data-src="sbs2024/sbs2024dramaawards_yuna.mp4" data-img="sbs2024/sbs2024dramaawards_yuna.jpg"></div>
+            <div class="part" data-src="sbs2024/sbs2024dramaawards_namjihyun.mp4" data-img="sbs2024/sbs2024dramaawards_namjihyun.jpg"></div>
+            <div class="part" data-src="sbs2024/sbs2024dramaawards_jiseunghyun.mp4" data-img="sbs2024/sbs2024dramaawards_jiseunghyun.jpg"></div>
+            <div class="part" data-src="sbs2024/sbs2024dramaawards_hanjaeyi.mp4" data-img="sbs2024/sbs2024dramaawards_hanjaeyi.jpg"></div>
+
+         </div>
+
+        </div>
+    </section>
+  </main>
+
+  <footer>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
