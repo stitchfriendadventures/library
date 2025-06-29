@@ -25,6 +25,12 @@
     <main class="main-content">
       <h1>🎵 Music Player</h1>
 
+    <!-- Album and Track Images -->
+    <div class="artwork-display">
+      <img id="albumImage" src="" alt="Album Cover" />
+      <img id="trackImage" src="" alt="Track Cover" />
+    </div>
+
       <!-- Album Selector -->
       <div class="album-select">
         <label for="albumList">Choose Album:</label>
@@ -52,14 +58,14 @@
   <!-- Hidden Track & Lyrics Data -->
   <div id="audioData" style="display: none;">
     <div class="artist" data-artist="Artist1">
-      <div class="album" data-name="Singles">
-        <div class="track" data-src="music/mayao/womenshenmedoubushi.mp3" data-title="我們什麼都不是"></div>
-        <div class="track" data-src="audio/Artist1/ChillVibes/Track2.mp3" data-title="Evening Glow"></div>
+      <div class="album" data-name="Singles" data-img="music/mayao.jpg">
+        <div class="track" data-src="music/mayao/womenshenmedoubushi.mp3" data-title="我們什麼都不是" data-img="music/mayao.jpg"></div>
+        <div class="track" data-src="audio/Artist1/ChillVibes/Track2.mp3" data-title="Evening Glow" data-img="music/mayao.jpg"></div>
       </div>
     </div>
     <div class="artist" data-artist="Artist2">
-      <div class="album" data-name="Dreamscape">
-        <div class="track" data-src="audio/Artist2/Dreamscape/Track1.mp3" data-title="Lucid"></div>
+      <div class="album" data-name="Dreamscape" data-img="music/leoku.jpg">
+        <div class="track" data-src="music/leoku.mp3" data-title="Lucid" data-img="music/leoku.jpg"></div>
       </div>
     </div>
   </div>
