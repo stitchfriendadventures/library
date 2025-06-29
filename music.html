@@ -6,40 +6,47 @@
   <link rel="stylesheet" href="audio.css" />
 </head>
 <body>
+  <div class="layout">
+    <!-- Sidebar: Artist Buttons -->
+    <aside class="sidebar">
+      <h2>Artists</h2>
+      <button onclick="selectArtist('Artist1')">Mayao 馬天佑 | HK</button>
+      <button onclick="selectArtist('Artist2')">Artist 2</button>
+    </aside>
 
-  <h1>🎵 Music Player</h1>
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <h1>🎵 Music Player</h1>
 
-  <!-- Artist Buttons -->
-  <div class="artist-buttons">
-    <button onclick="selectArtist('Artist1')">Mayao 馬天佑</button>
-    <button onclick="selectArtist('Artist2')">Artist 2</button>
+      <!-- Album Selector -->
+      <div class="album-select">
+        <label for="albumList">Choose Album:</label>
+        <select id="albumList" onchange="selectAlbum(this.value)">
+          <option value="">Select an album</option>
+        </select>
+      </div>
+
+      <!-- Track List -->
+      <ul id="trackList"></ul>
+
+      <!-- Audio Player -->
+      <audio id="audioPlayer" controls>
+        <source src="" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+
+      <!-- Lyrics Display -->
+      <div id="lyricsDisplay" class="lyrics-box"></div>
+    </main>
   </div>
 
-  <!-- Album Selector -->
-  <div class="album-select">
-    <label for="albumList">Choose Album:</label>
-    <select id="albumList" onchange="selectAlbum(this.value)">
-      <option value="">Select an album</option>
-    </select>
-  </div>
 
-  <!-- Track List -->
-  <ul id="trackList"></ul>
-
-  <!-- Audio Player -->
-  <audio id="audioPlayer" controls>
-    <source src="" type="audio/mpeg" />
-    Your browser does not support the audio element.
-  </audio>
-
-  <!-- Lyrics Display -->
-  <div id="lyricsDisplay" class="lyrics-box"></div>
 
   <!-- Hidden Track & Lyrics Data -->
   <div id="audioData" style="display: none;">
     <div class="artist" data-artist="Artist1">
       <div class="album" data-name="Singles">
-        <div class="track" data-src="music/mayao/womenshenmedoubushi.mp3" data-title="womenshenmedoubushi"></div>
+        <div class="track" data-src="music/mayao/womenshenmedoubushi.mp3" data-title="我們什麼都不是"></div>
         <div class="track" data-src="audio/Artist1/ChillVibes/Track2.mp3" data-title="Evening Glow"></div>
       </div>
     </div>
@@ -52,7 +59,7 @@
 
   <div id="lyricsData" style="display: none;">
     <div class="lyrics" data-track="music/mayao/womenshenmedoubushi.mp3">
-      <p data-time="0">我們什麼都不是 [Mayao 馬天佑] | HK</p>
+      <p data-time="0">我們什麼都不是 </p>
       <p data-time="4">Sunlight peeks through the trees</p>
       <p data-time="8">Birds singing in harmony</p>
       <p data-time="12">A peaceful day begins</p>
