@@ -26,31 +26,43 @@ function selectArtist(artistName) {
 }
 
 function selectAlbum(albumName) {
-  const trackList = document.getElementById("trackList");
-  trackList.innerHTML = '';
-
   const album = document.querySelector(`.album[data-name="${albumName}"]`);
   if (!album) return;
 
+  // Show album cover
+  const albumImg = album.dataset.img;
+  document.getElementById("albumImage").src = albumImg || '';
+  document.getElementById("albumImage").style.display = albumImg ? 'block' : 'none';
+
   const tracks = album.querySelectorAll(".track");
+  const trackList = document.getElementById("trackList");
+  trackList.innerHTML = '';
+
   tracks.forEach(track => {
     const li = document.createElement("li");
     li.textContent = track.dataset.title;
-    li.onclick = () => playTrack(track.dataset.src);
+    li.onclick = () => playTrack(track.dataset.src, track.dataset.img);
     trackList.appendChild(li);
   });
 
+  // Reset
   document.getElementById("audioPlayer").pause();
   document.getElementById("audioPlayer").src = '';
   document.getElementById("lyricsDisplay").innerHTML = '';
+  document.getElementById("trackImage").src = '';
   currentLyrics = [];
   clearInterval(lyricsTimer);
 }
 
-function playTrack(src) {
+
+function playTrack(src, trackImg = '') {
   const audio = document.getElementById("audioPlayer");
   audio.src = src;
   audio.play();
+
+  // Show track image
+  document.getElementById("trackImage").src = trackImg || '';
+  document.getElementById("trackImage").style.display = trackImg ? 'block' : 'none';
 
   loadLyricsForTrack(src);
 
