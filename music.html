@@ -5,59 +5,67 @@
   <title>Music</title>
   <link rel="stylesheet" href="audio.css" />
 </head>
-<body data-default-album="Album1">
-  <header>
-    <h1>🎶 My Favorite Songs</h1>
-        <nav>
-      <a href="index.html">Home</a>
-    </nav>
+<body>
 
-  </header>
+  <h1>🎵 Music Player</h1>
 
-  <main class="main-layout">
-    <aside class="season-buttons">
-      <button onclick="loadAlbum('Album1')">Mayao</button>
-    </aside>
+  <!-- Artist Buttons -->
+  <div class="artist-buttons">
+    <button onclick="selectArtist('Artist1')">Mayao 馬天佑</button>
+    <button onclick="selectArtist('Artist2')">Artist 2</button>
+  </div>
 
-    <section class="video-panel">
-      <audio id="audioPlayer" controls>
-        <source src="" type="audio/mpeg" />
-        Your browser does not support the audio tag.
-      </audio>
+  <!-- Album Selector -->
+  <div class="album-select">
+    <label for="albumList">Choose Album:</label>
+    <select id="albumList" onchange="selectAlbum(this.value)">
+      <option value="">Select an album</option>
+    </select>
+  </div>
 
-      <ul id="partList"></ul>
-      <div id="lyricsDisplay" class="lyrics-box"></div>
+  <!-- Track List -->
+  <ul id="trackList"></ul>
 
-      <!-- Data for tracks -->
-      <div id="audioData" style="display: none;">
-        <div class="album" data-album="Album1">
-          <div class="track" data-src="music/mayao/womenshenmedoubushi.mp3" data-img="music/mayao.jpg" data-title="Track1"></div>
-          <div class="track" data-src="audio/Album1/Track2.mp3" data-img="covers/Album1-Track2.jpg" data-title="Track2"></div>
-        </div>
+  <!-- Audio Player -->
+  <audio id="audioPlayer" controls>
+    <source src="" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Lyrics Display -->
+  <div id="lyricsDisplay" class="lyrics-box"></div>
+
+  <!-- Hidden Track & Lyrics Data -->
+  <div id="audioData" style="display: none;">
+    <div class="artist" data-artist="Artist1">
+      <div class="album" data-name="Singles">
+        <div class="track" data-src="music/mayao/womenshenmedoubushi.mp3" data-title="womenshenmedoubushi"></div>
+        <div class="track" data-src="audio/Artist1/ChillVibes/Track2.mp3" data-title="Evening Glow"></div>
       </div>
-
-      <!-- Lyrics data -->
-      <div id="lyricsData" style="display: none;">
-        <div class="lyrics" data-track="Album1-Track1">
-          <p data-time="0">我們什麼都不是 [Mayao 馬天佑] | HK</p>
-          <p data-time="3">This is the first line of the song</p>
-          <p data-time="7">And here comes the next lyric line</p>
-          <p data-time="12">And now a powerful chorus arrives</p>
-        </div>
-
-        <div class="lyrics" data-track="Album1-Track2">
-          <p data-time="0">Track 2 starts here</p>
-          <p data-time="5">We're singing in sync</p>
-          <p data-time="10">The verse continues onward</p>
-        </div>
+    </div>
+    <div class="artist" data-artist="Artist2">
+      <div class="album" data-name="Dreamscape">
+        <div class="track" data-src="audio/Artist2/Dreamscape/Track1.mp3" data-title="Lucid"></div>
       </div>
-    </section>
-  </main>
+    </div>
+  </div>
 
-  <footer>
-    <p>&copy; 2025 My Audio Playlist</p>
-  </footer>
+  <div id="lyricsData" style="display: none;">
+    <div class="lyrics" data-track="music/mayao/womenshenmedoubushi.mp3">
+      <p data-time="0">我們什麼都不是 [Mayao 馬天佑] | HK</p>
+      <p data-time="4">Sunlight peeks through the trees</p>
+      <p data-time="8">Birds singing in harmony</p>
+      <p data-time="12">A peaceful day begins</p>
+    </div>
 
-  <script src="audioscripts.js"></script>
+    <div class="lyrics" data-track="audio/Artist2/Dreamscape/Track1.mp3">
+      <p data-time="0">[Intro] Floating into dreams</p>
+      <p data-time="5">Clouds are rolling slow</p>
+      <p data-time="10">Time is drifting far away</p>
+      <p data-time="15">Welcome to the dreamscape</p>
+    </div>
+  </div>
+
+  <script src="audio.js"></script>
 </body>
 </html>
