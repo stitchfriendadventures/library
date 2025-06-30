@@ -42,6 +42,12 @@
       <!-- Track List -->
       <ul id="trackList"></ul>
 
+      <!-- Play Mode Selector -->
+      <div id="playModeSelector" style="margin-bottom: 10px; display: none;">
+        <button onclick="playSelectedMode('audio')">▶ Play Audio</button>
+        <button onclick="playSelectedMode('video')">🎬 Play Video</button>
+      </div>
+
       <!-- Audio Player -->
       <audio id="audioPlayer" controls>
         <source src="" type="audio/mpeg" />
