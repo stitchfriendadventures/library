@@ -41,7 +41,7 @@ function selectAlbum(albumName) {
   tracks.forEach(track => {
     const li = document.createElement("li");
     li.textContent = track.dataset.title;
-    li.onclick = () => playTrack(track.dataset.src, track.dataset.img);
+    li.onclick = () => playTrack(track.dataset.src, track.dataset.img, track.dataset.video || '');
     trackList.appendChild(li);
   });
 
@@ -55,15 +55,29 @@ function selectAlbum(albumName) {
 }
 
 
-function playTrack(src, trackImg = '') {
+function playTrack(src, trackImg = '', videoSrc = '') {
   const audio = document.getElementById("audioPlayer");
+  const video = document.getElementById("videoPlayer");
+  const videoSource = document.getElementById("videoSource");
+  
   audio.src = src;
   audio.play();
 
-  // Show track image
+  // Track image
   document.getElementById("trackImage").src = trackImg || '';
   document.getElementById("trackImage").style.display = trackImg ? 'block' : 'none';
 
+    // Video MV
+  if (videoSrc) {
+    videoSource.src = videoSrc;
+    video.load();
+    video.style.display = "block";
+  } else {
+    video.pause();
+    video.src = '';
+    video.style.display = "none";
+  }
+  
   loadLyricsForTrack(src);
 
   if (lyricsTimer) clearInterval(lyricsTimer);
