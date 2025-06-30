@@ -1,5 +1,6 @@
 let currentLyrics = [];
 let lyricsTimer = null;
+let selectedTrack = null;
 
 function selectArtist(artistName) {
   const albumList = document.getElementById("albumList");
@@ -38,10 +39,24 @@ function selectAlbum(albumName) {
   const trackList = document.getElementById("trackList");
   trackList.innerHTML = '';
 
-  tracks.forEach(track => {
-    const li = document.createElement("li");
-    li.textContent = track.dataset.title;
-    li.onclick = () => playTrack(track.dataset.src, track.dataset.img, track.dataset.video || '');
+tracks.forEach(track => {
+  const li = document.createElement("li");
+  li.textContent = track.dataset.title;
+  li.onclick = () => {
+    selectedTrack = {
+      src: track.dataset.src,
+      img: track.dataset.img,
+      video: track.dataset.video || ''
+    };
+
+        // Show play options
+    if (selectedTrack.video) {
+      document.getElementById("playModeSelector").style.display = "block";
+    } else {
+      document.getElementById("playModeSelector").style.display = "none";
+      playSelectedMode("audio"); // only audio available
+    }
+  };
     trackList.appendChild(li);
   });
 
@@ -115,3 +130,38 @@ function syncLyrics(currentTime) {
     }
   }
 }
+function playSelectedMode(mode) {
+  const audio = document.getElementById("audioPlayer");
+  const video = document.getElementById("videoPlayer");
+  const videoSource = document.getElementById("videoSource");
+
+  // Reset both players
+  audio.pause();
+  video.pause();
+  audio.src = '';
+  video.src = '';
+  videoSource.src = '';
+
+  if (mode === 'audio') {
+    // Audio only
+    audio.src = selectedTrack.src;
+    audio.play();
+    audio.style.display = 'block';
+    video.style.display = 'none';
+
+    // Lyrics & artwork
+    document.getElementById("trackImage").src = selectedTrack.img || '';
+    loadLyricsForTrack(selectedTrack.src);
+  } else if (mode === 'video') {
+    // Video with audio
+    videoSource.src = selectedTrack.video;
+    video.load();
+    video.play();
+    audio.style.display = 'none';
+    video.style.display = 'block';
+
+    // Optionally disable lyrics or clear them
+    document.getElementById("lyricsDisplay").innerHTML = '';
+  }
+}
+
