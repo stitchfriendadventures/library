@@ -89,7 +89,6 @@ function playTrack(src, trackImg = '', videoSrc = '') {
     video.style.display = "block";
   } else {
     video.pause();
-    video.src = '';
     video.style.display = "none";
   }
   
@@ -139,7 +138,6 @@ function playSelectedMode(mode) {
   audio.pause();
   video.pause();
   audio.src = '';
-  video.src = '';
   videoSource.src = '';
 
   if (mode === 'audio') {
@@ -156,9 +154,9 @@ function playSelectedMode(mode) {
     // Video with audio
     videoSource.src = selectedTrack.video;
     video.load();
+    video.style.display = 'block';
     video.play();
     audio.style.display = 'none';
-    video.style.display = 'block';
 
     // Optionally disable lyrics or clear them
     document.getElementById("lyricsDisplay").innerHTML = '';
