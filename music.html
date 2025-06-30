@@ -48,6 +48,12 @@
         Your browser does not support the audio element.
       </audio>
 
+      <!-- Video Player (shown only if track has MV) -->
+      <video id="videoPlayer" controls style="display: none; margin-top: 20px;" width="480">
+        <source id="videoSource" src="" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      
       <!-- Lyrics Display -->
       <div id="lyricsDisplay" class="lyrics-box"></div>
     </main>
@@ -59,8 +65,8 @@
   <div id="audioData" style="display: none;">
     <div class="artist" data-artist="mayao">
       <div class="album" data-name="Nude (Fame Glory Production) 2025.6.20" data-img="music/mayao/nude/nude_cover.jpg">
+        <div class="track" data-src="music/mayao/nude/duanya.mp3" data-title="斷崖" data-img="music/mayao/nude/duanya.jpg" data-video="music/mayao/nude/duanya.mp4"></div>
         <div class="track" data-src="music/mayao/nude/womenshenmedoubushi.mp3" data-title="我們什麼都不是" data-img="music/mayao/nude/womenshenmedoubushi.jpg"></div>
-        <div class="track" data-src="audio/Artist1/ChillVibes/Track2.mp3" data-title="Evening Glow" data-img="music/mayao.jpg"></div>
       </div>
     </div>
     <div class="artist" data-artist="Artist2">
