@@ -62,13 +62,14 @@ audio {
 }
 
 .lyrics-box p {
-  margin: 4px 0;
-  transition: color 0.3s;
+  margin: 5px 0;
+  color: #333;
 }
 
 .lyrics-box p.active {
-  color: #2196f3;
+  color: #d00;
   font-weight: bold;
+  background-color: #ffe0e0;
 }
 
 /* Layout */
