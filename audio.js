@@ -102,8 +102,12 @@ function loadLyricsForTrack(src) {
   const lyricsDisplay = document.getElementById("lyricsDisplay");
   lyricsDisplay.innerHTML = '';
 
-  const lyricsData = document.querySelector(`.lyrics[data-track="${src}"]`);
+  // Extract relative path only
+  const relativeSrc = src.replace(location.origin + '/', '');
+
+  const lyricsData = document.querySelector(`.lyrics[data-track="${relativeSrc}"]`);
   if (!lyricsData) {
+    console.warn("Lyrics not found for:", relativeSrc);
     currentLyrics = [];
     return;
   }
