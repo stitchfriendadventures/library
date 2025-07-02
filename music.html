@@ -181,10 +181,26 @@ function selectAlbum(album) {
   trackList.innerHTML = '';
   albumData.tracks.forEach((track, index) => {
     const trackDiv = document.createElement("div");
-    trackDiv.innerHTML = `
-      <img src="${track.image}" alt="${track.title}" onclick="playTrack(${index})"/>
-      <p>${track.title}</p>
-    `;
+    trackDiv.style.display = "flex";
+    trackDiv.style.justifyContent = "space-between";
+    trackDiv.style.alignItems = "center";
+    trackDiv.style.marginBottom = "10px";
+    trackDiv.style.cursor = "pointer";
+    trackDiv.onclick = () => playTrack(index);
+
+    const titleSpan = document.createElement("span");
+    titleSpan.textContent = track.title;
+    trackDiv.appendChild(titleSpan);
+
+    if (track.video) {
+      const img = document.createElement("img");
+      img.src = track.image;
+      img.alt = track.title;
+      img.style.width = "80px";
+      img.style.height = "auto";
+      trackDiv.appendChild(img);
+    }
+
     trackList.appendChild(trackDiv);
   });
   playTrack(0);
