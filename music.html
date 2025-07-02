@@ -2,129 +2,267 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Music</title>
-  <link rel="stylesheet" href="audio.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Music Player</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      margin: 0;
+      height: 100vh;
+    }
+    #sidebar {
+      width: 200px;
+      background: #222;
+      color: white;
+      padding: 10px;
+      overflow-y: auto;
+    }
+    #sidebar h3 {
+      margin-top: 0;
+    }
+    #sidebar button {
+      display: block;
+      width: 100%;
+      margin-bottom: 5px;
+      padding: 8px;
+      background: #333;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+    #main {
+      flex: 1;
+      padding: 20px;
+    }
+    #albumSelect {
+      margin-bottom: 10px;
+    }
+    #trackList img {
+      width: 100px;
+      height: auto;
+      cursor: pointer;
+    }
+    #lyrics {
+      border: 1px solid #ccc;
+      padding: 10px;
+      height: 200px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      background: #f9f9f9;
+    }
+    .highlight {
+      background: yellow;
+    }
+    video {
+      display: none;
+      width: 100%;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-    <h1>Music Player</h1>
-    <nav>
-      <a href="index.html">Home</a>
-    </nav>
-  </header>
 
-  <div class="layout">
-    <!-- Sidebar: Artist Buttons -->
-    <aside class="sidebar">
-      <h2>Artists</h2>
-      <button onclick="selectArtist('mayao')">Mayao 馬天佑 | HK</button>
-      <button onclick="selectArtist('Artist2')">Artist 2</button>
-    </aside>
+<div id="sidebar">
+  <h3>Artists</h3>
+  <button onclick="selectArtist('mayao')">Mayao 馬天佑 | HK</button>
+  <button onclick="selectArtist('Artist2')">Artist 2</button>
+</div>
 
-    <!-- Main Content Area -->
-    <main class="main-content">
+<div id="main">
+  <h2 id="artistTitle">Select an artist</h2>
+  <select id="albumSelect" onchange="selectAlbum(this.value)"></select>
+  <div id="albumImage"></div>
+  <div id="trackList"></div>
 
-    <!-- Album and Track Images -->
-    <div class="artwork-display">
-      <img id="albumImage" src="" alt="Album Cover" />
-      <img id="trackImage" src="" alt="Track Cover" />
-    </div>
+  <audio id="audioPlayer" controls onended="playNextTrack()"></audio>
+  <button onclick="toggleVideo()">Show/Hide Video</button>
+  <video id="videoPlayer" controls></video>
+  
+  <h3>Lyrics</h3>
+  <div id="lyrics"></div>
+</div>
 
-      <!-- Album Selector -->
-      <div class="album-select">
-        <label for="albumList">Choose Album:</label>
-        <select id="albumList" onchange="selectAlbum(this.value)">
-          <option value="">Select an album</option>
-        </select>
-      </div>
+<script>
+const data = {
+  "mayao": {
+    "Nude (Fame Glory Production) 2025.6.20": {
+      image: "music/mayao/nude/nude_cover.jpg",
+      tracks: [
+        {
+          title: "受傷",
+          audio: "music/mayao/nude/shoushang.mp3",
+          image: "music/mayao/nude/shoushang.jpg",
+          lyrics: "media/track1.lrc"
+        },
+        {
+          title: "斷崖",
+          audio: "music/mayao/nude/duanya.mp3",
+          image: "music/mayao/nude/duanya.jpg",
+          lyrics: "media/track2.lrc",
+          video: "music/mayao/nude/duanya.mp4"
 
-      <!-- Track List -->
-      <ul id="trackList"></ul>
+        },
+        {
+          title: "沒有人需要知道你的需要",
+          audio: "music/mayao/nude/meiyourenxuyaozhidaonidexuyao.mp3",
+          image: "music/mayao/nude/meiyourenxuyaozhidaonidexuyao.jpg",
+          lyrics: "media/track3.lrc",
+          video: "music/mayao/nude/meiyourenxuyaozhidaonidexuyao.mp4"
 
-      <!-- Play Mode Selector -->
-      <div id="playModeSelector" style="margin-bottom: 10px; display: none;">
-        <button onclick="playSelectedMode('audio')">▶ Play Audio</button>
-        <button onclick="playSelectedMode('video')">🎬 Play Video</button>
-      </div>
+        },
+        {
+          title: "我們什麼都不是",
+          audio: "music/mayao/nude/womenshenmedoubushi.mp3",
+          image: "music/mayao/nude/womenshenmedoubushi.jpg",
+          lyrics: "media/track4.lrc"
 
-      <!-- Audio Player -->
-      <audio id="audioPlayer" controls>
-        <source src="" type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
+        },
+        {
+          title: "What If I (Demo)",
+          audio: "music/mayao/nude/whatifidemo.mp3",
+          image: "music/mayao/nude/whatifidemo.jpg",
+          lyrics: "media/track3.lrc",
+          video: "music/mayao/nude/whatifidemo.mp4"
 
-      <!-- Video Player (shown only if track has MV) -->
-      <video id="videoPlayer" controls style="display: none;" width="480">
-        <source id="videoSource" src="" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      
-      <!-- Lyrics Display -->
-      <div id="lyricsDisplay" class="lyrics-box"></div>
-    </main>
-  </div>
+        },
+        {
+          title: "我們什麼都不是...but we are everything",
+          audio: "music/mayao/nude/butweareeverything.mp3",
+          image: "music/mayao/nude/butweareeverything.jpg",
+          lyrics: "media/track3.lrc",
+          video: "music/mayao/nude/butweareeverything.mp4"
+
+        }
 
 
+      ]
+    }
+  },
+  "Artist2": {
+    "Album B": {
+      image: "media/albumB.jpg",
+      tracks: [
+        {
+          title: "Track X",
+          audio: "media/artist2_albumB_trackX.mp3",
+          image: "media/trackX.jpg",
+          lyrics: "media/trackX.lrc"
+        }
+      ]
+    }
+  }
+};
 
-  <!-- Hidden Track & Lyrics Data -->
-  <div id="audioData" style="display: none;">
-    <div class="artist" data-artist="mayao">
-      <div class="album" data-name="Nude (Fame Glory Production) 2025.6.20" data-img="music/mayao/nude/nude_cover.jpg">
-        <div class="track" data-src="music/mayao/nude/shoushang.mp3" data-title="受傷" data-img="music/mayao/nude/shoushang.jpg"></div>
-        <div class="track" data-src="music/mayao/nude/duanya.mp3" data-title="斷崖" data-img="music/mayao/nude/duanya.jpg" data-video="music/mayao/nude/duanya.mp4"></div>
-        <div class="track" data-src="music/mayao/nude/meiyourenxuyaozhidaonidexuyao.mp3" data-title="沒有人需要知道你的需要" data-img="music/mayao/nude/meiyourenxuyaozhidaonidexuyao.jpg" data-video="music/mayao/nude/meiyourenxuyaozhidaonidexuyao.mp4"></div>
-        <div class="track" data-src="music/mayao/nude/womenshenmedoubushi.mp3" data-title="我們什麼都不是" data-img="music/mayao/nude/womenshenmedoubushi.jpg"></div>
-        <div class="track" data-src="music/mayao/nude/whatifidemo.mp3" data-title="What If I (Demo)" data-img="music/mayao/nude/whatifidemo.jpg" data-video="music/mayao/nude/whatifidemo.mp4"></div>
-        <div class="track" data-src="music/mayao/nude/butweareeverything.mp3" data-title="我們什麼都不是...but we are everything" data-img="music/mayao/nude/butweareeverything.jpg" data-video="music/mayao/nude/butweareeverything.mp4"></div>
+let currentArtist = null;
+let currentAlbum = null;
+let currentTrackIndex = 0;
 
-      </div>
-    </div>
-    <div class="artist" data-artist="Artist2">
-      <div class="album" data-name="Dreamscape" data-img="music/leoku.jpg">
-        <div class="track" data-src="music/leoku.mp3" data-title="Lucid" data-img="music/leoku.jpg"></div>
-      </div>
-    </div>
-  </div>
+function selectArtist(artist) {
+  currentArtist = artist;
+  document.getElementById("artistTitle").textContent = artist;
+  const albumSelect = document.getElementById("albumSelect");
+  albumSelect.innerHTML = '';
+  const albums = Object.keys(data[artist]);
+  albums.forEach(album => {
+    const option = document.createElement("option");
+    option.value = album;
+    option.textContent = album;
+    albumSelect.appendChild(option);
+  });
+  selectAlbum(albums[0]);
+}
 
-  <div id="lyricsData" style="display: none;">
-    <div class="lyrics" data-track="music/mayao/nude/womenshenmedoubushi.mp3">
-      <p data-time="16">還原從前說過的謊 為何仍然怕見光</p>
-      <p data-time="24">太多的感覺 更多束縛 怕捨不得故意扮善忘</p>
-      <p data-time="33">在這晚有點不安 沉迷浪漫但受傷中經過 不知怎去講</p>
+function selectAlbum(album) {
+  currentAlbum = album;
+  const albumData = data[currentArtist][album];
+  document.getElementById("albumImage").innerHTML = `<img src="${albumData.image}" width="200"/>`;
+  const trackList = document.getElementById("trackList");
+  trackList.innerHTML = '';
+  albumData.tracks.forEach((track, index) => {
+    const trackDiv = document.createElement("div");
+    trackDiv.innerHTML = `
+      <img src="${track.image}" alt="${track.title}" onclick="playTrack(${index})"/>
+      <p>${track.title}</p>
+    `;
+    trackList.appendChild(trackDiv);
+  });
+  playTrack(0);
+}
 
-      <p data-time="48">你的直覺反射我的幻覺 這模樣這形象這處境這角色方向 跟你誠實了</p>
-<p data-time="50">這暫緩是有需要 也許共你很入戲 可是什麼都不是</p>
-<p data-time="60">我們是 我們什麼都不是</p>
-<p data-time="70">沒能力承受了 寧願執迷苦笑 沉醉被誰忘掉</p>
-<p data-time="80">究竟是我很像你 抑或什麼都不是</p>
-<p data-time="90">有時是 有時什麼都不是</p>
-<p data-time="100">沒權利留住你 來抱著來揹著 尋找可放手的勇氣</p>
+function playTrack(index) {
+  const track = data[currentArtist][currentAlbum].tracks[index];
+  currentTrackIndex = index;
+  const audio = document.getElementById("audioPlayer");
+  audio.src = track.audio;
+  audio.play();
+  loadLyrics(track.lyrics);
+  loadVideo(track.video);
+}
 
-<p data-time="110">你的直覺反射我的幻覺 這模樣這形象這處境這角色真相 </p>
-<p data-time="120">可以誠實了 這暫緩是有必要</p>
+function playNextTrack() {
+  const tracks = data[currentArtist][currentAlbum].tracks;
+  if (currentTrackIndex + 1 < tracks.length) {
+    playTrack(currentTrackIndex + 1);
+  }
+}
 
-<p data-time="130">也許共你很入戲 可是什麼都不是</p>
-<p data-time="140">我明白 我們什麼都不是</p>
-<p data-time="150">沒能力承受了 另願執迷苦笑 唯有近乎逃掉</p>
+function loadLyrics(url) {
+  fetch(url)
+    .then(res => res.text())
+    .then(text => {
+      const lines = text.split("\n").map(line => {
+        const match = line.match(/\[(\d+):(\d+).(\d+)\](.*)/);
+        if (match) {
+          const time = parseInt(match[1]) * 60 + parseInt(match[2]);
+          return { time, text: match[4] };
+        }
+      }).filter(Boolean);
+      syncLyrics(lines);
+    });
+}
 
-<p data-time="160">究竟是我很像你 抑或什麼都不是</p>
-<p data-time="170">我承認 我們什麼都不是</p>
-<p data-time="180">沒名字成就你 來抱著來揹著 而我並無救藥</p>
-<p data-time="190">It&apos;s hard to accept that this feeling I feel Is worth hiding</p>
-<p data-time="200">Out of mind Out of sight It&apos;s controllin&apos;</p>
-<p data-time="210">Stepping over these lines</p>
-<p data-time="220">i&apos;m falling behind countless Tries for this hurLng tonight</p>
-<p data-time="230">I&apos;ve fallen behind but Hoping you&apos;d find my goodbye</p>
-    </div>
+function syncLyrics(lines) {
+  const lyricsBox = document.getElementById("lyrics");
+  lyricsBox.innerHTML = '';
+  lines.forEach(line => {
+    const div = document.createElement("div");
+    div.textContent = line.text;
+    div.dataset.time = line.time;
+    lyricsBox.appendChild(div);
+  });
+  
+  const audio = document.getElementById("audioPlayer");
+  audio.ontimeupdate = () => {
+    const currentTime = Math.floor(audio.currentTime);
+    const divs = lyricsBox.querySelectorAll("div");
+    divs.forEach(div => div.classList.remove("highlight"));
+    for (let i = lines.length - 1; i >= 0; i--) {
+      if (currentTime >= lines[i].time) {
+        const currentLine = divs[i];
+        currentLine.classList.add("highlight");
+        currentLine.scrollIntoView({ behavior: "smooth", block: "center" });
+        break;
+      }
+    }
+  };
+}
 
-    <div class="lyrics" data-track="audio/Artist2/Dreamscape/Track1.mp3">
-      <p data-time="0">[Intro] Floating into dreams</p>
-      <p data-time="5">Clouds are rolling slow</p>
-      <p data-time="10">Time is drifting far away</p>
-      <p data-time="15">Welcome to the dreamscape</p>
-    </div>
-  </div>
+function loadVideo(videoPath) {
+  const video = document.getElementById("videoPlayer");
+  if (videoPath) {
+    video.src = videoPath;
+    video.style.display = "block";
+  } else {
+    video.src = "";
+    video.style.display = "none";
+  }
+}
 
-  <script src="audio.js"></script>
+function toggleVideo() {
+  const video = document.getElementById("videoPlayer");
+  video.style.display = video.style.display === "none" ? "block" : "none";
+}
+</script>
 </body>
 </html>
