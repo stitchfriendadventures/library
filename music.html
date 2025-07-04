@@ -203,14 +203,23 @@ function selectAlbum(album) {
     titleSpan.textContent = track.title;
     trackDiv.appendChild(titleSpan);
 
-    if (track.video) {
-      const img = document.createElement("img");
-      img.src = track.image;
-      img.alt = track.title;
-      img.style.width = "80px";
-      img.style.height = "auto";
-      trackDiv.appendChild(img);
-    }
+if (track.video) {
+  const img = document.createElement("img");
+  img.src = track.image;
+  img.alt = track.title;
+  img.style.width = "80px";
+  img.style.height = "auto";
+  img.style.cursor = "pointer";
+
+  img.onclick = (e) => {
+    e.stopPropagation(); // Prevent triggering playTrack(index)
+    loadVideo(track.video);
+    const video = document.getElementById("videoPlayer");
+    video.play();
+  };
+
+  trackDiv.appendChild(img);
+}
 
     trackList.appendChild(trackDiv);
   });
