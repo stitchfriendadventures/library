@@ -20,6 +20,62 @@ footer {
   text-align: center;
   padding: 0.5rem;
 }
+/* Base nav styles */
+.nav-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-menu > li {
+  position: relative;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  display: block;
+  color: #000;
+  background-color: #B574F1;
+  border-radius: 4px;
+}
+
+.nav-menu a:hover {
+  background-color: #9c4de0;
+  color: white;
+}
+
+/* Dropdown styles */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  min-width: 180px;
+  z-index: 100;
+}
+
+.dropdown-menu li a {
+  background-color: #fff;
+  color: #333;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
 
 .main-layout {
   display: flex;
