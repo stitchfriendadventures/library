@@ -7,7 +7,7 @@ body {
 }
 /* Default header styling */
 header {
-  height:300px;
+  height:100px;
   background-size: cover;
   background-position: top;
   color: white;
