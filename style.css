@@ -8,7 +8,7 @@ body {
 /* Default header styling */
 header {
   height:200px;
-  background-size: contain;
+  background-size: cover;
   background-position: top;
   color: white;
   padding: 2rem;
