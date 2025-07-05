@@ -9,7 +9,7 @@ body {
 header {
   height:200px;
   background-size: contain;
-  background-position: top;
+  background-position: center;
   color: white;
   padding: 2rem;
   text-align: center;
