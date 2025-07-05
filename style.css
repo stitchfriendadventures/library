@@ -19,7 +19,7 @@ header::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: #fff;
+  background: rgba(0, 0, 0, 0.4);
   z-index: 0;
 }
 
