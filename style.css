@@ -15,6 +15,13 @@ header {
 header h1 {
 color:#000;  
 }
+.banner-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
 footer {
   background: #eee;
   text-align: center;
