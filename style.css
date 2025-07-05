@@ -5,22 +5,43 @@ body {
   padding: 0;
   color: #333;
 }
-
+/* Default header styling */
 header {
-  background: #fff;
-  color: #000;
-  padding: 1rem;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 2rem;
   text-align: center;
+  position: relative;
 }
-header h1 {
-color:#000;  
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  z-index: 0;
 }
-.banner-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
+
+header h1,
+header nav {
+  position: relative;
+  z-index: 1;
 }
+
+/* Different banners per page */
+body.home-page header {
+  background-image: url('banner-home.jpg');
+}
+
+body.music-page header {
+  background-image: url('banner-music.jpg');
+}
+
+body.phineasandferb-page header {
+  background-image: url('phineasandferb.jpg');
+}
+
 
 footer {
   background: #eee;
