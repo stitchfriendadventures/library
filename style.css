@@ -42,6 +42,10 @@ body.phineasandferb-page header {
   background-image: url('phineasandferb.jpg');
 }
 
+body.thebigbangtheory-page header {
+  background-image: url('tbbt_banner.jpg');
+}
+
 
 footer {
   background: #eee;
