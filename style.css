@@ -46,6 +46,10 @@ body.thebigbangtheory-page header {
   background-image: url('tbbt_banner.jpg');
 }
 
+body.jangnara-page header {
+  background-image: url('jangnara/jangnara_banner.jpg');
+}
+
 body.sonijakwok-page header {
   background-image: url('sonijakwok/sonijakwok_banner.jpg');
 }
