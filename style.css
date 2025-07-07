@@ -46,6 +46,9 @@ body.thebigbangtheory-page header {
   background-image: url('tbbt_banner.jpg');
 }
 
+body.sonijakwok-page header {
+  background-image: url('sonijakwok/sonijakwok_banner.jpg');
+}
 
 footer {
   background: #eee;
