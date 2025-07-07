@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jang Na Ra</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-default-season="Season1">
+  <header>
+    <h1>Jang Nara Drama</h1>
+<nav>
+  <ul class="nav-menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="music.html">Music</a></li>
+    <li class="dropdown">
+      <a href="#">TV <span aria-hidden="true">▾</span></a>
+      <ul class="dropdown-menu">
+        <li><a href="phineasandferb.html">Phineas and Ferb</a></li>
+        <li><a href="thebigbangtheory.html">The Big Bang Theory</a></li>
+        <li><a href="jangnara.html">Jang Nara Drama</a></li>
+      </ul>
+    </li>
+            <li class="dropdown">
+      <a href="#">Movies <span aria-hidden="true">▾</span></a>
+      <ul class="dropdown-menu">
+        <li><a href="tsom.html">The Sound of Music</a></li>
+        <li><a href="maruko.html">Maruko</a></li>
+      </ul>
+    </li>
+    <li><a href="awards.html">Awards</a></li>
+
+  </ul>
+</nav>
+  </header>
+
+  <main class="main-layout">
+    <aside class="season-buttons">
+      <button onclick="loadSeason('Season1')">The Last Empress (2018)</button>
+      <button onclick="loadSeason('Season2')">VIP (2019)</button>
+      <button onclick="loadSeason('Season3')">Sell Your Haunted House (2021)</button>
+      <button onclick="loadSeason('Season4')">Good Partner (2024)</button>
+
+
+    </aside>
+
+    <section class="video-panel">
+      <video id="videoPlayer" width="600" controls>
+        Your browser does not support the video tag.
+      </video>
+
+      <div class="controls">
+        <label for="episodeSelect">Choose Episode:</label>
+        <select id="episodeSelect" onchange="loadEpisodeParts()">
+          <option value="">-- Select Episode --</option>
+        </select>
+      </div>
+
+      <ul id="partList"></ul>
+
+      <div id="videoData" style="display: none;">
+          <div class="season" data-season="Season1">
+            <div class="episode" data-episode="Interview">
+              <div class="part" data-src="thelastempress/thelastempress_kocowainterview.mp4" data-img="thelastempress/thelastempress_kocowainterview.jpg"></div>
+            </div>
+            <div class="episode" data-episode="Clips">
+              <div class="part" data-src="thelastempress/thelastempress_epilogue.mp4" data-img="thelastempress/thelastempress_epilogue.jpg"></div>
+            </div>
+          </div>
+        
+        <div class="season" data-season="Season2">
+          <div class="episode" data-episode="Interview">
+            <div class="part" data-src="vip/vip_kocowainterview.mp4" data-img="vip/vip_kocowainterview.jpg"></div>
+          </div>
+          <div class="episode" data-episode="Clips">
+            <div class="part" data-src="vip/vip_15clip.mp4" data-img="vip/vip_15clip.jpg"></div>
+          </div>
+        </div>
+
+        <div class="season" data-season="Season3">
+         <div class="episode" data-episode="Interview">
+            <div class="part" data-src="syhh/syhh_kocowainterview.mp4" data-img="syhh/syhh_kocowainterview.jpg"></div>
+         </div>
+          <div class="episode" data-episode="Episode 16">
+            <div class="part" data-src="syhh.16/syhh.16_001.mp4" data-img="syhh.16/syhh.16_001.png"></div>
+            <div class="part" data-src="syhh.16/syhh.16_002.mp4" data-img="syhh.16/syhh.16_002.jpg"></div>
+            <div class="part" data-src="syhh.16/syhh.16_003.mp4" data-img="syhh.16/syhh.16_003.jpg"></div>
+            <div class="part" data-src="syhh.16/syhh.16_004.mp4" data-img="syhh.16/syhh.16_004.jpg"></div>
+          </div>
+        </div>
+        
+        <div class="season" data-season="Season4">
+         <div class="episode" data-episode="Interview">
+            <div class="part" data-src="goodpartner/goodpartner_viuinterview_jnr.mp4" data-img="goodpartner/goodpartner_viuinterview_jnr.jpg"></div>
+         </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>2025 My Website
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
