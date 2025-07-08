@@ -197,3 +197,10 @@ footer {
   object-fit: cover;
   margin-bottom: 5px;
 }
+
+.thumb-caption {
+  font-size: 0.9rem;
+  color: #333;
+  text-align: center;
+  padding: 4px;
+}
