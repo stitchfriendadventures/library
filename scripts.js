@@ -26,41 +26,58 @@ function loadSeason(seasonName) {
 }
 
 function loadEpisodeParts() {
-  const seasonName = episodeSelect.getAttribute('data-season');
-  const epName = episodeSelect.value;
-  if (!seasonName || !epName) return;
+  const select = document.getElementById('episodeSelect');
+  const selectedEpisode = select.value;
+  const seasonName = document.body.getAttribute('data-default-season');
+  const videoData = document.getElementById('videoData');
+  const partList = document.getElementById('partList');
+  partList.innerHTML = '';
 
-  const episode = dataContainer.querySelector(`.season[data-season="${seasonName}"] .episode[data-episode="${epName}"]`);
+  const season = videoData.querySelector(`.season[data-season="${seasonName}"]`);
+  if (!season) return;
+
+  const episode = season.querySelector(`.episode[data-episode="${selectedEpisode}"]`);
   if (!episode) return;
 
   const parts = episode.querySelectorAll('.part');
-  currentParts = Array.from(parts).map(part => part.getAttribute('data-src'));
-  currentIndex = 0;
 
-  partList.innerHTML = '';
+  parts.forEach(part => {
+    const src = part.getAttribute('data-src');
+    const imgSrc = part.getAttribute('data-img');
+    const altText = part.getAttribute('data-alt') || 'Video preview';
 
-parts.forEach((part, index) => {
-  const src = part.getAttribute('data-src');
-  const img = part.getAttribute('data-img') || 'thumbs/default.jpg';
-  const altText = part.getAttribute('data-alt') || `Part ${index + 1}`;
+    const li = document.createElement('div');
+    li.className = 'part-thumbnail';
+    li.tabIndex = 0;
 
-  const li = document.createElement('li');
-  li.className = 'part-thumbnail';
-  li.setAttribute('data-index', index);
+    li.onclick = () => {
+      const video = document.getElementById('videoPlayer');
+      video.src = src;
+      video.load();
+      video.play();
 
-  const image = document.createElement('img');
-  image.src = img;
-  image.alt = altText;
-  image.className = 'thumb';
+      // Remove active state from other thumbnails
+      document.querySelectorAll('.part-thumbnail').forEach(p => p.classList.remove('active'));
+      li.classList.add('active');
+    };
 
-  const label = document.createElement('span');
-  label.textContent = altText;
+    // Conditional rendering
+    if (imgSrc && imgSrc.trim() !== '') {
+      const img = document.createElement('img');
+      img.src = imgSrc;
+      img.alt = altText;
+      img.className = 'thumb';
+      li.appendChild(img);
+    }
 
-  li.appendChild(image);
-  li.appendChild(label);
-  li.addEventListener('click', () => playPart(index));
-  partList.appendChild(li);
-});
+    const caption = document.createElement('div');
+    caption.className = 'thumb-caption';
+    caption.textContent = altText;
+    li.appendChild(caption);
+
+    partList.appendChild(li);
+  });
+}
 
   playPart(0);
 }
