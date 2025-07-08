@@ -39,27 +39,28 @@ function loadEpisodeParts() {
 
   partList.innerHTML = '';
 
-  parts.forEach((part, index) => {
-    const src = part.getAttribute('data-src');
-    const img = part.getAttribute('data-img') || 'thumbs/default.jpg';
+parts.forEach((part, index) => {
+  const src = part.getAttribute('data-src');
+  const img = part.getAttribute('data-img') || 'thumbs/default.jpg';
+  const altText = part.getAttribute('data-alt') || `Part ${index + 1}`;
 
-    const li = document.createElement('li');
-    li.className = 'part-thumbnail';
-    li.setAttribute('data-index', index);
+  const li = document.createElement('li');
+  li.className = 'part-thumbnail';
+  li.setAttribute('data-index', index);
 
-    const image = document.createElement('img');
-    image.src = img;
-    image.alt = `Part ${index + 1}`;
-    image.className = 'thumb';
+  const image = document.createElement('img');
+  image.src = img;
+  image.alt = altText;
+  image.className = 'thumb';
 
-    const label = document.createElement('span');
-    label.textContent = `Part ${index + 1}`;
+  const label = document.createElement('span');
+  label.textContent = altText;
 
-    li.appendChild(image);
-    li.appendChild(label);
-    li.addEventListener('click', () => playPart(index));
-    partList.appendChild(li);
-  });
+  li.appendChild(image);
+  li.appendChild(label);
+  li.addEventListener('click', () => playPart(index));
+  partList.appendChild(li);
+});
 
   playPart(0);
 }
