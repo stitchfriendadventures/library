@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kpop Demon Hunters</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-default-season="Season1">
+  <header>
+    <h1>Kpop Demon Hunters</h1>
+<nav>
+  <ul class="nav-menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="music.html">Music</a></li>
+    <li class="dropdown">
+      <a href="#">TV ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="phineasandferb.html">Phineas and Ferb</a></li>
+        <li><a href="thebigbangtheory.html">The Big Bang Theory</a></li>
+        <li><a href="jangnara.html">Jang Nara Drama</a></li>
+        <li><a href="sonijakwok.html">Sonija Kwok Drama</a></li>
+      </ul>
+    </li>
+            <li class="dropdown">
+      <a href="#">Movies ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="kpopdemonhunters.html">Kpop Demon Hunters</a></li>
+        <li><a href="tsom.html">The Sound of Music</a></li>
+        <li><a href="maruko.html">Maruko</a></li>
+      </ul>
+    </li>
+    <li><a href="awards.html">Awards</a></li>
+
+  </ul>
+</nav>
+  </header>
+
+  <main class="main-layout">
+    <aside class="season-buttons">
+      <button onclick="loadSeason('Season1')">Kpop Demon Hunters</button>
+
+
+    </aside>
+
+    <section class="video-panel">
+      <video id="videoPlayer" width="600" height="350" controls>
+        <source src="" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <div class="controls">
+        <label for="episodeSelect">Choose Episode:</label>
+        <select id="episodeSelect" onchange="loadEpisodeParts()">
+          <option value="">-- Select Episode --</option>
+        </select>
+      </div>
+
+      <ul id="partList"></ul>
+
+      <div id="videoData" style="display: none;">
+        <div class="season" data-season="Season1">
+          <div class="episode" data-episode="Kpop Demon Hunters">
+            <div class="part" data-src="kpopdemonhunters/kpopdemonhunters_001.mp4" data-img="kpopdemonhunters/kpopdemonhunters_001.jpg"></div>
+            <div class="part" data-src="kpopdemonhunters/kpopdemonhunters_002.mp4" data-img="kpopdemonhunters/kpopdemonhunters_002.jpg"></div>
+            <div class="part" data-src="kpopdemonhunters/kpopdemonhunters_003.mp4" data-img="kpopdemonhunters/kpopdemonhunters_003.jpg"></div>
+            <div class="part" data-src="kpopdemonhunters/kpopdemonhunters_004.mp4" data-img="kpopdemonhunters/kpopdemonhunters_004.jpg"></div>
+            <div class="part" data-src="kpopdemonhunters/kpopdemonhunters_005.mp4" data-img="kpopdemonhunters/kpopdemonhunters_005.jpg"></div>
+            <div class="part" data-src="kpopdemonhunters/kpopdemonhunters_006.mp4" data-img="kpopdemonhunters/kpopdemonhunters_006.jpg"></div>
+
+          </div>
+
+        </div>
+
+    </section>
+  </main>
+
+  <footer>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
