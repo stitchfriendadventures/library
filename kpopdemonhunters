@@ -60,12 +60,13 @@
       <div id="videoData" style="display: none;">
         <div class="season" data-season="Season1">
           <div class="episode" data-episode="Kpop Demon Hunters">
-            <div class="part" data-src="kpopdemonhunters/kpopdemonhunters_001.mp4" data-img="kpopdemonhunters/kpopdemonhunters_001.jpg"></div>
-            <div class="part" data-src="kpopdemonhunters/kpopdemonhunters_002.mp4" data-img="kpopdemonhunters/kpopdemonhunters_002.jpg"></div>
-            <div class="part" data-src="kpopdemonhunters/kpopdemonhunters_003.mp4" data-img="kpopdemonhunters/kpopdemonhunters_003.jpg"></div>
-            <div class="part" data-src="kpopdemonhunters/kpopdemonhunters_004.mp4" data-img="kpopdemonhunters/kpopdemonhunters_004.jpg"></div>
-            <div class="part" data-src="kpopdemonhunters/kpopdemonhunters_005.mp4" data-img="kpopdemonhunters/kpopdemonhunters_005.jpg"></div>
-            <div class="part" data-src="kpopdemonhunters/kpopdemonhunters_006.mp4" data-img="kpopdemonhunters/kpopdemonhunters_006.jpg"></div>
+            <div class="part" data-src="kpdh/kpdh_001.mp4" data-img="kpdh/kpdh_001.jpg"></div>
+            <div class="part" data-src="kpdh/kpdh_002.mp4" data-img="kpdh/kpdh_002.jpg"></div>
+            <div class="part" data-src="kpdh/kpdh_003.mp4" data-img="kpdh/kpdh_003.jpg"></div>
+            <div class="part" data-src="kpdh/kpdh_004.mp4" data-img="kpdh/kpdh_004.jpg"></div>
+            <div class="part" data-src="kpdh/kpdh_005.mp4" data-img="kpdh/kpdh_005.jpg"></div>
+            <div class="part" data-src="kpdh/kpdh_006.mp4" data-img="kpdh/kpdh_006.jpg"></div>
+            <div class="part" data-src="kpdh/kpdh_007.mp4" data-img="kpdh/kpdh_007.jpg"></div>
 
           </div>
 
